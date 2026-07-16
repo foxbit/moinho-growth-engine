@@ -1,21 +1,22 @@
 interface BadgeProps {
   label: string
-  variant?: 'success' | 'warning' | 'danger' | 'info' | 'neutral'
+  variant?: 'success' | 'warning' | 'danger' | 'info' | 'neutral' | 'primary'
   size?: 'sm' | 'md'
 }
 
 const VARIANTES = {
-  success: 'bg-green-100 text-green-800 dark:bg-green-900/40 dark:text-green-300',
-  warning: 'bg-amber-100 text-amber-800 dark:bg-amber-900/40 dark:text-amber-300',
-  danger: 'bg-red-100 text-red-800 dark:bg-red-900/40 dark:text-red-300',
-  info: 'bg-blue-100 text-blue-800 dark:bg-blue-900/40 dark:text-blue-300',
-  neutral: 'bg-gray-100 text-gray-700 dark:bg-gray-800 dark:text-gray-300',
+  success: 'bg-[#D1FAE5] text-[#065F46] dark:bg-[#064E3B] dark:text-[#86EFAC]',
+  warning: 'bg-[#FEF3C7] text-[#92400E] dark:bg-[#78350F] dark:text-[#FDE047]',
+  danger: 'bg-[#FEE2E2] text-[#991B1B] dark:bg-[#7F1D1D] dark:text-[#FCA5A5]',
+  info: 'bg-[#E8EFFF] text-[#003BA3] dark:bg-[#1E3A8A] dark:text-[#93C5FD]',
+  primary: 'bg-[#E8EFFF] text-[#0052CC] dark:bg-[#1E3A8A] dark:text-[#60A5FA]',
+  neutral: 'bg-[var(--color-bg-tertiary)] text-[var(--color-text-secondary)]',
 }
 
 export function Badge({ label, variant = 'neutral', size = 'sm' }: BadgeProps) {
-  const tamanho = size === 'sm' ? 'px-2 py-0.5 text-xs' : 'px-2.5 py-1 text-sm'
+  const tamanho = size === 'sm' ? 'px-2.5 py-1 text-xs font-medium' : 'px-3 py-1.5 text-sm font-medium'
   return (
-    <span className={`inline-flex items-center rounded-full font-medium ${VARIANTES[variant]} ${tamanho}`}>
+    <span className={`inline-flex items-center rounded-full transition-colors ${VARIANTES[variant]} ${tamanho}`}>
       {label}
     </span>
   )

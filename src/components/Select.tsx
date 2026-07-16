@@ -12,7 +12,7 @@ export function Select({ options, value, onChange, placeholder, label, id }: Sel
   return (
     <div className="w-full">
       {label && (
-        <label htmlFor={selectId} className="mb-1 block text-xs font-medium text-gray-600 dark:text-gray-300">
+        <label htmlFor={selectId} className="mb-2 block text-xs font-semibold text-[var(--color-text-primary)]">
           {label}
         </label>
       )}
@@ -20,7 +20,7 @@ export function Select({ options, value, onChange, placeholder, label, id }: Sel
         id={selectId}
         value={value}
         onChange={(e) => onChange(e.target.value)}
-        className="w-full rounded-lg border border-gray-300 bg-white px-3 py-2 text-sm outline-none transition-colors focus:border-primary dark:border-gray-600 dark:bg-gray-800 dark:text-gray-100"
+        className="w-full rounded-lg border border-[var(--color-border)] bg-[var(--color-bg-secondary)] px-3.5 py-2.5 text-sm text-[var(--color-text-primary)] outline-none transition-all duration-200 focus:border-[var(--color-primary)] focus:ring-2 focus:ring-[var(--color-primary)] focus:ring-opacity-10"
       >
         {placeholder && <option value="">{placeholder}</option>}
         {options.map((opt) => (

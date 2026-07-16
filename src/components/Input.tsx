@@ -25,8 +25,8 @@ export function Input({
   return (
     <div className="w-full">
       {label && (
-        <label htmlFor={inputId} className="mb-1 block text-xs font-medium text-gray-600 dark:text-gray-300">
-          {label} {required && <span className="text-critical">*</span>}
+        <label htmlFor={inputId} className="mb-2 block text-xs font-semibold text-[var(--color-text-primary)]">
+          {label} {required && <span className="text-[var(--color-critical)]">*</span>}
         </label>
       )}
       <input
@@ -37,11 +37,13 @@ export function Input({
         disabled={disabled}
         required={required}
         onChange={(e) => onChange(e.target.value)}
-        className={`w-full rounded-lg border bg-white px-3 py-2 text-sm outline-none transition-colors placeholder:text-gray-400 focus:border-primary disabled:bg-gray-100 dark:bg-gray-800 dark:text-gray-100 dark:disabled:bg-gray-900 ${
-          error ? 'border-critical' : 'border-gray-300 dark:border-gray-600'
+        className={`w-full rounded-lg border bg-[var(--color-bg-secondary)] px-3.5 py-2.5 text-sm text-[var(--color-text-primary)] placeholder:text-[var(--color-text-tertiary)] outline-none transition-all duration-200 focus:ring-2 focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed ${
+          error
+            ? 'border-[var(--color-critical)] focus:border-[var(--color-critical)] focus:ring-[var(--color-critical)] focus:ring-opacity-20'
+            : 'border-[var(--color-border)] focus:border-[var(--color-primary)] focus:ring-[var(--color-primary)] focus:ring-opacity-10'
         }`}
       />
-      {error && <p className="mt-1 text-xs text-critical">{error}</p>}
+      {error && <p className="mt-1.5 text-xs font-medium text-[var(--color-critical)]">{error}</p>}
     </div>
   )
 }

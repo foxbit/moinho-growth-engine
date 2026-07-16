@@ -26,29 +26,30 @@ export function Modal({ isOpen, title, onClose, children, footer, wide }: ModalP
 
   return (
     <div
-      className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 p-4 animate-fade-in"
+      className="fixed inset-0 z-50 flex items-center justify-center backdrop-blur-sm p-4 animate-fade-in"
+      style={{ backgroundColor: 'rgba(15, 23, 42, 0.5)' }}
       onClick={onClose}
       role="dialog"
       aria-modal="true"
       aria-label={title}
     >
       <div
-        className={`flex max-h-[90vh] w-full flex-col rounded-lg bg-white shadow-xl animate-slide-up dark:bg-[#111827] ${wide ? 'max-w-3xl' : 'max-w-lg'}`}
+        className={`flex max-h-[90vh] w-full flex-col rounded-2xl bg-[var(--color-bg-secondary)] shadow-xl animate-scale-in border border-[var(--color-border)] ${wide ? 'max-w-3xl' : 'max-w-lg'}`}
         onClick={(e) => e.stopPropagation()}
       >
-        <div className="flex items-center justify-between border-b border-gray-200 px-5 py-4 dark:border-gray-700">
-          <h2 className="text-lg font-semibold">{title}</h2>
+        <div className="flex items-center justify-between border-b border-[var(--color-border)] px-6 py-4">
+          <h2 className="text-lg font-semibold text-[var(--color-text-primary)]">{title}</h2>
           <button
             onClick={onClose}
             aria-label="Fechar"
-            className="rounded p-1 text-gray-500 transition-colors hover:bg-gray-100 hover:text-gray-800 dark:hover:bg-gray-800 dark:hover:text-gray-200"
+            className="rounded-lg p-1.5 text-[var(--color-text-tertiary)] transition-all hover:bg-[var(--color-bg-tertiary)] hover:text-[var(--color-text-primary)]"
           >
             <X className="h-5 w-5" />
           </button>
         </div>
-        <div className="overflow-y-auto px-5 py-4">{children}</div>
+        <div className="overflow-y-auto px-6 py-4">{children}</div>
         {footer && (
-          <div className="flex justify-end gap-2 border-t border-gray-200 px-5 py-3 dark:border-gray-700">
+          <div className="flex justify-end gap-3 border-t border-[var(--color-border)] px-6 py-4 bg-[var(--color-bg-tertiary)]">
             {footer}
           </div>
         )}

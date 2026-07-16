@@ -2,7 +2,7 @@ import type { ReactNode } from 'react'
 import { Loader2 } from 'lucide-react'
 
 interface ButtonProps {
-  variant?: 'primary' | 'secondary' | 'danger' | 'ghost'
+  variant?: 'primary' | 'secondary' | 'danger' | 'ghost' | 'outline'
   size?: 'sm' | 'md' | 'lg'
   type?: 'button' | 'submit'
   disabled?: boolean
@@ -13,17 +13,22 @@ interface ButtonProps {
 }
 
 const VARIANTES = {
-  primary: 'bg-primary text-white hover:bg-blue-800 disabled:bg-blue-300',
+  primary:
+    'bg-[var(--color-primary)] text-[var(--color-text-inverse)] hover:bg-[var(--color-primary-dark)] hover:shadow-md active:scale-95 disabled:opacity-50 disabled:cursor-not-allowed',
   secondary:
-    'bg-gray-200 text-gray-800 hover:bg-gray-300 dark:bg-gray-700 dark:text-gray-100 dark:hover:bg-gray-600',
-  danger: 'bg-critical text-white hover:bg-red-600 disabled:bg-red-300',
-  ghost: 'bg-transparent text-primary hover:bg-blue-50 dark:text-blue-400 dark:hover:bg-gray-800',
+    'bg-[var(--color-bg-tertiary)] text-[var(--color-text-primary)] hover:bg-[var(--color-border)] active:scale-95 disabled:opacity-50 disabled:cursor-not-allowed',
+  danger:
+    'bg-[var(--color-critical)] text-[var(--color-text-inverse)] hover:bg-red-600 hover:shadow-md active:scale-95 disabled:opacity-50 disabled:cursor-not-allowed',
+  ghost:
+    'bg-transparent text-[var(--color-primary)] hover:bg-[var(--color-primary-light)] active:scale-95 disabled:opacity-50 disabled:cursor-not-allowed',
+  outline:
+    'border border-[var(--color-border)] text-[var(--color-text-primary)] hover:border-[var(--color-primary)] hover:bg-[var(--color-primary-light)] active:scale-95 disabled:opacity-50 disabled:cursor-not-allowed',
 }
 
 const TAMANHOS = {
-  sm: 'px-2.5 py-1.5 text-xs',
-  md: 'px-4 py-2 text-sm',
-  lg: 'px-6 py-3 text-base',
+  sm: 'px-3 py-1.5 text-xs font-medium rounded-lg',
+  md: 'px-4 py-2.5 text-sm font-medium rounded-lg',
+  lg: 'px-6 py-3 text-base font-medium rounded-xl',
 }
 
 export function Button({
@@ -41,7 +46,7 @@ export function Button({
       type={type}
       disabled={disabled || loading}
       onClick={onClick}
-      className={`inline-flex items-center justify-center gap-2 rounded-lg font-medium transition-colors duration-150 disabled:cursor-not-allowed ${VARIANTES[variant]} ${TAMANHOS[size]} ${className}`}
+      className={`inline-flex items-center justify-center gap-2 font-medium transition-all duration-200 ease-out ${VARIANTES[variant]} ${TAMANHOS[size]} ${className}`}
     >
       {loading && <Loader2 className="h-4 w-4 animate-spin" />}
       {children}

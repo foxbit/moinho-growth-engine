@@ -20,20 +20,20 @@ interface CompanyDetailProps {
 
 function Secao({ titulo, children }: { titulo: string; children: React.ReactNode }) {
   return (
-    <section className="rounded-lg border border-gray-200 dark:border-gray-700">
-      <h3 className="border-b border-gray-200 bg-gray-50 px-4 py-2 text-xs font-semibold uppercase tracking-wide text-gray-500 dark:border-gray-700 dark:bg-gray-800 dark:text-gray-400">
+    <section className="rounded-xl border border-[var(--color-border)] bg-[var(--color-bg-tertiary)]">
+      <h3 className="border-b border-[var(--color-border)] px-4 py-3 text-xs font-semibold uppercase tracking-wide text-[var(--color-text-secondary)]">
         {titulo}
       </h3>
-      <div className="px-4 py-3">{children}</div>
+      <div className="px-4 py-4">{children}</div>
     </section>
   )
 }
 
 function LinhaInfo({ rotulo, valor }: { rotulo: string; valor: React.ReactNode }) {
   return (
-    <div className="flex flex-col gap-0.5 py-1 text-sm sm:flex-row sm:gap-2">
-      <span className="w-44 shrink-0 text-gray-500 dark:text-gray-400">{rotulo}</span>
-      <span className="min-w-0 font-medium">{valor}</span>
+    <div className="flex flex-col gap-0.5 py-1.5 text-sm sm:flex-row sm:gap-2">
+      <span className="w-44 shrink-0 text-[var(--color-text-secondary)]">{rotulo}</span>
+      <span className="min-w-0 font-medium text-[var(--color-text-primary)]">{valor}</span>
     </div>
   )
 }
@@ -61,11 +61,11 @@ export function CompanyDetail({ company, onClose, acaoInicial = null }: CompanyD
   const templateEmail = `Olá, equipe da ${company.nomeFantasia}!\n\nSomos do Moinho, o hub de inovação de Juiz de Fora. Identificamos que a ${company.razaoSocial} atua em ${company.setor} e acreditamos que nosso ecossistema pode acelerar o crescimento de vocês.\n\nQue tal agendarmos uma conversa de 20 minutos?\n\nAbraços,\n${usuario}`
 
   return (
-    <div className="flex h-full flex-col rounded-lg border border-gray-200 bg-white shadow-lg dark:border-gray-700 dark:bg-[#111827] animate-slide-up">
-      <div className="flex items-start justify-between border-b border-gray-200 px-5 py-4 dark:border-gray-700">
+    <div className="flex h-full flex-col rounded-2xl border border-[var(--color-border)] bg-[var(--color-bg-secondary)] shadow-xl animate-slide-up">
+      <div className="flex items-start justify-between border-b border-[var(--color-border)] px-0 py-4 pb-5">
         <div>
-          <h2 className="text-lg font-bold leading-tight">{company.razaoSocial}</h2>
-          <p className="text-sm text-gray-500 dark:text-gray-400">
+          <h2 className="text-lg font-bold leading-tight text-[var(--color-text-primary)]">{company.razaoSocial}</h2>
+          <p className="text-sm text-[var(--color-text-secondary)]" style={{marginTop: '0.25rem'}}>
             {company.nomeFantasia !== company.razaoSocial && `${company.nomeFantasia} · `}
             CNPJ {formatCnpj(company.cnpj)}
           </p>
@@ -73,16 +73,16 @@ export function CompanyDetail({ company, onClose, acaoInicial = null }: CompanyD
         <button
           onClick={onClose}
           aria-label="Fechar detalhes"
-          className="rounded p-1 text-gray-400 transition-colors hover:bg-gray-100 hover:text-gray-700 dark:hover:bg-gray-800"
+          className="rounded-lg p-1.5 text-[var(--color-text-tertiary)] transition-all duration-200 hover:bg-[var(--color-bg-tertiary)] hover:text-[var(--color-text-primary)]"
         >
           <X className="h-5 w-5" />
         </button>
       </div>
 
-      <div className="flex-1 space-y-4 overflow-y-auto p-5">
+      <div className="flex-1 space-y-4 overflow-y-auto px-0 py-5">
         {feedback && (
-          <p className="rounded-lg bg-green-50 px-4 py-2 text-sm font-medium text-green-700 animate-fade-in dark:bg-green-900/30 dark:text-green-300">
-            {feedback}
+          <p className="rounded-lg bg-[#D1FAE5] text-[#065F46] px-4 py-3 text-sm font-medium animate-fade-in">
+            ✓ {feedback}
           </p>
         )}
 

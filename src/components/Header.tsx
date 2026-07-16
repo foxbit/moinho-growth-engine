@@ -31,16 +31,16 @@ export function Header() {
   }
 
   const linkClasse = ({ isActive }: { isActive: boolean }) =>
-    `rounded-lg px-3 py-1.5 text-sm font-medium transition-colors ${
+    `rounded-lg px-3 py-1.5 text-sm font-medium transition-all duration-200 ${
       isActive
-        ? 'bg-blue-50 text-primary dark:bg-gray-800 dark:text-blue-400'
-        : 'text-gray-600 hover:text-primary dark:text-gray-300 dark:hover:text-blue-400'
+        ? 'bg-[var(--color-primary-light)] text-[var(--color-primary)]'
+        : 'text-[var(--color-text-secondary)] hover:text-[var(--color-primary)] hover:bg-[var(--color-bg-tertiary)]'
     }`
 
   return (
-    <header className="sticky top-0 z-40 border-b border-gray-200 bg-white/95 backdrop-blur dark:border-gray-700 dark:bg-[#111827]/95">
+    <header className="sticky top-0 z-40 border-b border-[var(--color-border)] bg-[var(--color-bg-secondary)]/95 backdrop-blur supports-[backdrop-filter]:bg-opacity-80">
       <div className="mx-auto flex max-w-container items-center justify-between px-4 py-3">
-        <Link to="/" className="flex items-center gap-2 text-lg font-bold text-primary dark:text-blue-400">
+        <Link to="/" className="flex items-center gap-2 text-lg font-bold text-[var(--color-primary)]">
           <Wind className="h-6 w-6" />
           MOINHO
         </Link>
@@ -62,7 +62,7 @@ export function Header() {
           <button
             onClick={toggle}
             aria-label={dark ? 'Ativar modo claro' : 'Ativar modo escuro'}
-            className="rounded-lg p-2 text-gray-500 transition-colors hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-800"
+            className="rounded-lg p-2 text-[var(--color-text-tertiary)] transition-all duration-200 hover:bg-[var(--color-bg-tertiary)] hover:text-[var(--color-text-primary)]"
           >
             {dark ? <Sun className="h-4 w-4" /> : <Moon className="h-4 w-4" />}
           </button>

@@ -12,17 +12,17 @@ export function CheckboxGroup({ label, options, selected, onChange }: CheckboxGr
 
   return (
     <fieldset>
-      <legend className="mb-1.5 text-xs font-medium text-gray-600 dark:text-gray-300">{label}</legend>
-      <div className="space-y-1.5">
+      <legend className="mb-3 text-xs font-semibold text-[var(--color-text-primary)]">{label}</legend>
+      <div className="space-y-2">
         {options.map((opt) => (
-          <label key={opt.value} className="flex cursor-pointer items-center gap-2 text-sm">
+          <label key={opt.value} className="flex cursor-pointer items-center gap-2.5 text-sm transition-colors hover:text-[var(--color-primary)]">
             <input
               type="checkbox"
               checked={selected.includes(opt.value)}
               onChange={() => toggle(opt.value)}
-              className="h-4 w-4 rounded border-gray-300 text-primary accent-[#0052CC]"
+              className="h-4 w-4 rounded border-[var(--color-border)] text-[var(--color-primary)] cursor-pointer accent-[var(--color-primary)] transition-all"
             />
-            <span className="leading-tight">{opt.label}</span>
+            <span className="leading-tight text-[var(--color-text-secondary)]">{opt.label}</span>
           </label>
         ))}
       </div>

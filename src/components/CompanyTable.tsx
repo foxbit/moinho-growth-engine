@@ -84,22 +84,22 @@ export function CompanyTable({ companies, onVerDetalhes, onAgendar }: CompanyTab
 
   return (
     <div>
-      <div className="mb-3 flex flex-wrap items-center justify-between gap-2">
-        <p className="text-sm font-medium">
+      <div className="mb-4 flex flex-wrap items-center justify-between gap-2">
+        <p className="text-sm font-medium text-[var(--color-text-primary)]">
           {companies.length} empresa{companies.length === 1 ? '' : 's'} encontrada{companies.length === 1 ? '' : 's'}
           {selecionadas.size > 0 && (
-            <span className="ml-2 text-gray-500 dark:text-gray-400">· {selecionadas.size} selecionada(s)</span>
+            <span className="ml-2 text-[var(--color-text-secondary)]">· {selecionadas.size} selecionada(s)</span>
           )}
         </p>
-        <Button variant="secondary" size="sm" onClick={exportar}>
+        <Button variant="outline" size="sm" onClick={exportar}>
           <Download className="h-4 w-4" />
           Exportar CSV {selecionadas.size > 0 ? `(${selecionadas.size})` : '(todas)'}
         </Button>
       </div>
 
-      <div className="overflow-x-auto rounded-lg border border-gray-200 dark:border-gray-700">
-        <table className="w-full min-w-[600px] bg-white text-sm dark:bg-[#111827]">
-          <thead className="bg-gray-50 text-left text-xs uppercase tracking-wide text-gray-500 dark:bg-gray-800 dark:text-gray-400">
+      <div className="overflow-x-auto rounded-xl border border-[var(--color-border)]">
+        <table className="w-full min-w-[600px] bg-[var(--color-bg-secondary)] text-sm">
+          <thead className="bg-[var(--color-bg-tertiary)] text-left text-xs uppercase tracking-wide font-semibold text-[var(--color-text-secondary)] border-b border-[var(--color-border)]">
             <tr>
               <th className="px-3 py-2.5">
                 <input
@@ -123,9 +123,9 @@ export function CompanyTable({ companies, onVerDetalhes, onAgendar }: CompanyTab
               <th className="px-3 py-2.5 font-semibold">Ações</th>
             </tr>
           </thead>
-          <tbody className="divide-y divide-gray-100 dark:divide-gray-800">
+          <tbody className="divide-y divide-[var(--color-border-light)]">
             {visiveis.map((company) => (
-              <tr key={company.id} className="transition-colors hover:bg-blue-50/50 dark:hover:bg-gray-800/60">
+              <tr key={company.id} className="transition-all duration-200 hover:bg-[var(--color-bg-tertiary)]">
                 <td className="px-3 py-2.5">
                   <input
                     type="checkbox"
@@ -138,7 +138,7 @@ export function CompanyTable({ companies, onVerDetalhes, onAgendar }: CompanyTab
                 <td className="max-w-[240px] px-3 py-2.5">
                   <button
                     onClick={() => onVerDetalhes(company)}
-                    className="block truncate text-left font-medium text-primary hover:underline dark:text-blue-400"
+                    className="block truncate text-left font-medium text-[var(--color-primary)] hover:text-[var(--color-primary-dark)] transition-colors"
                     title={company.razaoSocial}
                   >
                     {company.razaoSocial}
@@ -187,7 +187,7 @@ export function CompanyTable({ companies, onVerDetalhes, onAgendar }: CompanyTab
             ))}
             {visiveis.length === 0 && (
               <tr>
-                <td colSpan={8} className="px-3 py-8 text-center text-gray-400">
+                <td colSpan={8} className="px-3 py-8 text-center text-[var(--color-text-tertiary)]">
                   Nenhuma empresa encontrada com os filtros atuais.
                 </td>
               </tr>
@@ -197,8 +197,8 @@ export function CompanyTable({ companies, onVerDetalhes, onAgendar }: CompanyTab
       </div>
 
       {totalPaginas > 1 && (
-        <div className="mt-3 flex items-center justify-between text-sm">
-          <span className="text-gray-500 dark:text-gray-400">
+        <div className="mt-4 flex items-center justify-between text-sm">
+          <span className="text-[var(--color-text-secondary)]">
             Página {paginaAtual} de {totalPaginas}
           </span>
           <div className="flex gap-2">
