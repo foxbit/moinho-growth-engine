@@ -26,9 +26,9 @@ const VARIANTES = {
 }
 
 const TAMANHOS = {
-  sm: 'px-3 py-1.5 text-xs font-medium rounded-lg',
-  md: 'px-4 py-2.5 text-sm font-medium rounded-lg',
-  lg: 'px-6 py-3 text-base font-medium rounded-xl',
+  sm: 'px-3 py-1.5 text-xs font-medium rounded-full',
+  md: 'px-4 py-2.5 text-sm font-medium rounded-full',
+  lg: 'px-6 py-3 text-base font-medium rounded-full',
 }
 
 export function Button({

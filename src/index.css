@@ -1,81 +1,79 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;600;700&display=swap');
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 :root {
-  --color-primary: #0052CC;
-  --color-primary-light: #E8EFFF;
-  --color-primary-dark: #003BA3;
-  --color-secondary: #10B981;
-  --color-accent: #7C3AED;
-  --color-alert: #F59E0B;
+  --color-primary: #FF0000;
+  --color-primary-light: #FFE0E0;
+  --color-primary-dark: #CC0000;
+  --color-secondary: #065FD4;
+  --color-accent: #10B981;
+  --color-alert: #FB8C00;
   --color-critical: #EF4444;
-  --color-success: #10B981;
+  --color-success: #2BA640;
 
-  --color-bg-primary: #F8FAFC;
+  --color-bg-primary: #FFFFFF;
   --color-bg-secondary: #FFFFFF;
-  --color-bg-tertiary: #F1F5F9;
+  --color-bg-tertiary: #F8F9FA;
 
-  --color-text-primary: #1E293B;
-  --color-text-secondary: #64748B;
-  --color-text-tertiary: #94A3B8;
+  --color-text-primary: #0F0F0F;
+  --color-text-secondary: #606060;
+  --color-text-tertiary: #A0A0A0;
   --color-text-inverse: #FFFFFF;
 
-  --color-border: #E2E8F0;
-  --color-border-light: #F1F5F9;
+  --color-border: transparent;
+  --color-border-light: transparent;
 
-  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
-  --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.07);
-  --shadow-lg: 0 10px 25px rgba(0, 0, 0, 0.08);
-  --shadow-xl: 0 20px 40px rgba(0, 0, 0, 0.1);
+  --shadow-sm: none;
+  --shadow-md: 0 1px 2px rgba(0, 0, 0, 0.1);
+  --shadow-lg: 0 4px 16px rgba(0, 0, 0, 0.1);
+  --shadow-xl: 0 12px 32px rgba(0, 0, 0, 0.15);
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --color-bg-primary: #0F172A;
-    --color-bg-secondary: #1A2332;
-    --color-bg-tertiary: #1E293B;
-    --color-text-primary: #F1F5F9;
-    --color-text-secondary: #CBD5E1;
-    --color-text-tertiary: #94A3B8;
-    --color-text-inverse: #0F172A;
-    --color-border: #334155;
-    --color-border-light: #1E293B;
-    --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.3);
-    --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.4);
-    --shadow-lg: 0 10px 25px rgba(0, 0, 0, 0.5);
-    --shadow-xl: 0 20px 40px rgba(0, 0, 0, 0.6);
+    --color-bg-primary: #0F0F0F;
+    --color-bg-secondary: #1A1A1A;
+    --color-bg-tertiary: #2A2A2A;
+    --color-text-primary: #FFFFFF;
+    --color-text-secondary: #B0B0B0;
+    --color-text-tertiary: #808080;
+    --color-text-inverse: #0F0F0F;
+    --color-border: transparent;
+    --color-border-light: transparent;
+    --shadow-md: 0 1px 0 rgba(255, 255, 255, 0.05);
+    --shadow-lg: 0 2px 0 rgba(255, 255, 255, 0.05);
+    --shadow-xl: 0 4px 0 rgba(255, 255, 255, 0.08);
   }
 }
 
 :root[data-theme="dark"] {
-  --color-bg-primary: #0F172A;
-  --color-bg-secondary: #1A2332;
-  --color-bg-tertiary: #1E293B;
-  --color-text-primary: #F1F5F9;
-  --color-text-secondary: #CBD5E1;
-  --color-text-tertiary: #94A3B8;
-  --color-text-inverse: #0F172A;
-  --color-border: #334155;
-  --color-border-light: #1E293B;
-  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.3);
-  --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.4);
-  --shadow-lg: 0 10px 25px rgba(0, 0, 0, 0.5);
-  --shadow-xl: 0 20px 40px rgba(0, 0, 0, 0.6);
+  --color-bg-primary: #0F0F0F;
+  --color-bg-secondary: #1A1A1A;
+  --color-bg-tertiary: #2A2A2A;
+  --color-text-primary: #FFFFFF;
+  --color-text-secondary: #B0B0B0;
+  --color-text-tertiary: #808080;
+  --color-text-inverse: #0F0F0F;
+  --color-border: transparent;
+  --color-border-light: transparent;
+  --shadow-md: 0 1px 0 rgba(255, 255, 255, 0.05);
+  --shadow-lg: 0 2px 0 rgba(255, 255, 255, 0.05);
+  --shadow-xl: 0 4px 0 rgba(255, 255, 255, 0.08);
 }
 
 :root[data-theme="light"] {
-  --color-bg-primary: #F8FAFC;
+  --color-bg-primary: #FFFFFF;
   --color-bg-secondary: #FFFFFF;
-  --color-bg-tertiary: #F1F5F9;
-  --color-text-primary: #1E293B;
-  --color-text-secondary: #64748B;
-  --color-text-tertiary: #94A3B8;
+  --color-bg-tertiary: #F8F9FA;
+  --color-text-primary: #0F0F0F;
+  --color-text-secondary: #606060;
+  --color-text-tertiary: #A0A0A0;
   --color-text-inverse: #FFFFFF;
-  --color-border: #E2E8F0;
-  --color-border-light: #F1F5F9;
+  --color-border: transparent;
+  --color-border-light: transparent;
 }
 
 * {
@@ -83,7 +81,7 @@
 }
 
 body {
-  @apply font-geist antialiased;
+  @apply font-sans antialiased;
   background-color: var(--color-bg-primary);
   color: var(--color-text-primary);
 }

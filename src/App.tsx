@@ -3,16 +3,12 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import { Loader2 } from 'lucide-react'
 import { Layout } from './components/Layout'
 import { ProtectedRoute } from './components/ProtectedRoute'
-import { Home } from './pages/Home'
-import { Empresas } from './pages/Empresas'
-import { Eventos } from './pages/Eventos'
+import { OperationalDashboard } from './pages/OperationalDashboard'
 import { Login } from './pages/Login'
 import { Metricas } from './pages/Metricas'
 
 // Páginas com mapa (Leaflet) carregam sob demanda
 const Dashboard = lazy(() => import('./pages/Dashboard').then((m) => ({ default: m.Dashboard })))
-const MapaPublico = lazy(() => import('./pages/MapaPublico').then((m) => ({ default: m.MapaPublico })))
-const EmpresaDetalhes = lazy(() => import('./pages/EmpresaDetalhes').then((m) => ({ default: m.EmpresaDetalhes })))
 
 function Carregando() {
   return (
@@ -27,25 +23,7 @@ export default function App() {
     <BrowserRouter>
       <Routes>
         <Route element={<Layout />}>
-          <Route path="/" element={<Home />} />
-          <Route path="/empresas" element={<Empresas />} />
-          <Route
-            path="/empresas/:id"
-            element={
-              <Suspense fallback={<Carregando />}>
-                <EmpresaDetalhes />
-              </Suspense>
-            }
-          />
-          <Route
-            path="/mapa"
-            element={
-              <Suspense fallback={<Carregando />}>
-                <MapaPublico />
-              </Suspense>
-            }
-          />
-          <Route path="/eventos" element={<Eventos />} />
+          <Route path="/" element={<OperationalDashboard />} />
           <Route path="/login" element={<Login />} />
           <Route
             path="/dashboard"

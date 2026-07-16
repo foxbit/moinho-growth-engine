@@ -6,9 +6,6 @@ import { useThemeStore } from '../store/useThemeStore'
 
 const LINKS_PUBLICOS = [
   { to: '/', label: 'Início' },
-  { to: '/empresas', label: 'Empresas' },
-  { to: '/mapa', label: 'Mapa' },
-  { to: '/eventos', label: 'Eventos' },
 ]
 
 const LINKS_INTERNOS = [
@@ -38,7 +35,7 @@ export function Header() {
     }`
 
   return (
-    <header className="sticky top-0 z-40 border-b border-[var(--color-border)] bg-[var(--color-bg-secondary)]/95 backdrop-blur supports-[backdrop-filter]:bg-opacity-80">
+    <header className="sticky top-0 z-40 border-b border-[var(--color-bg-tertiary)] bg-[var(--color-bg-secondary)]/95 backdrop-blur supports-[backdrop-filter]:bg-opacity-80">
       <div className="mx-auto flex max-w-container items-center justify-between px-4 py-3">
         <Link to="/" className="flex items-center gap-2 text-lg font-bold text-[var(--color-primary)]">
           <Wind className="h-6 w-6" />
@@ -83,7 +80,7 @@ export function Header() {
           ) : (
             <Link
               to="/login"
-              className="hidden rounded-lg bg-primary px-4 py-1.5 text-sm font-medium text-white transition-colors hover:bg-blue-800 md:block"
+              className="hidden rounded-full bg-[var(--color-primary)] px-4 py-1.5 text-sm font-medium text-white transition-colors hover:bg-[var(--color-primary-dark)] md:block"
             >
               Entrar
             </Link>

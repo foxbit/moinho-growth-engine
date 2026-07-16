@@ -37,10 +37,8 @@ export function Input({
         disabled={disabled}
         required={required}
         onChange={(e) => onChange(e.target.value)}
-        className={`w-full rounded-lg border bg-[var(--color-bg-secondary)] px-3.5 py-2.5 text-sm text-[var(--color-text-primary)] placeholder:text-[var(--color-text-tertiary)] outline-none transition-all duration-200 focus:ring-2 focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed ${
-          error
-            ? 'border-[var(--color-critical)] focus:border-[var(--color-critical)] focus:ring-[var(--color-critical)] focus:ring-opacity-20'
-            : 'border-[var(--color-border)] focus:border-[var(--color-primary)] focus:ring-[var(--color-primary)] focus:ring-opacity-10'
+        className={`w-full rounded-md bg-[var(--color-bg-tertiary)] px-3.5 py-2.5 text-sm text-[var(--color-text-primary)] placeholder:text-[var(--color-text-tertiary)] outline-none transition-all duration-200 focus:ring-2 focus:ring-[var(--color-primary)] focus:ring-opacity-20 disabled:opacity-50 disabled:cursor-not-allowed ${
+          error ? 'ring-2 ring-[var(--color-critical)]' : ''
         }`}
       />
       {error && <p className="mt-1.5 text-xs font-medium text-[var(--color-critical)]">{error}</p>}
