@@ -1,17 +1,14 @@
 import { useMemo, useState, useCallback } from 'react'
-import { MapPin, TrendingUp } from 'lucide-react'
+import { TrendingUp } from 'lucide-react'
 import type { Company } from '../types'
 import { useAppStore } from '../store/useAppStore'
 import { useDebounce } from '../hooks/useDebounce'
 import { Card } from '../components/Card'
 import { Badge, badgePorte, badgeCrescimento } from '../components/Badge'
-import { Button } from '../components/Button'
 import { FilterBar } from '../components/FilterBar'
 import { CompanyDrawer } from '../components/CompanyDrawer'
 import { MapView } from '../components/MapView'
 import { MapLegend } from '../components/MapLegend'
-import { formatCurrency } from '../utils/format'
-import { corDoSetor } from '../utils/colors'
 
 export function OperationalDashboard() {
   const { companies, cidades, setores } = useAppStore()
