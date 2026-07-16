@@ -1,69 +1,321 @@
-# Moinho — Growth Engine
+# Moinho Growth Engine
 
-Plataforma Inteligente de Localização e Ativação Comercial de Empresas da região de Juiz de Fora (MG).
+**Plataforma inteligente de inteligência comercial para prospecção e ativação de empresas.**
 
-Projeto acadêmico (FIAP) construído conforme o PRD v1.0. **Frontend only**: todos os dados são mockados em JSON — não há backend.
+Uma solução SPA (Single Page Application) desenvolvida com React 19, TypeScript e Vite, com design premium inspirado no sistema Red Broadcast. O Moinho conecta o ecossistema de inovação de Juiz de Fora com empresas locais, facilitando prospecção, relacionamento e conversão comercial.
 
-## Stack
+**Repositório**: [github.com/foxbit/moinho-growth-engine](https://github.com/foxbit/moinho-growth-engine)
 
-- **Vite + React 19 + TypeScript**
-- **TailwindCSS** (com modo escuro por classe)
-- **React Router** (SPA)
-- **Leaflet / react-leaflet** (mapas com OpenStreetMap)
-- **Zustand** (estado global: dados, autenticação e tema)
-- **date-fns** e **lucide-react**
+---
 
-## Como rodar
+## 🚀 Visão Geral
 
-```bash
-npm install
-npm run dev      # desenvolvimento em http://localhost:5173
-npm run build    # build de produção em dist/
-npm run preview  # serve o build localmente
+### Públicos
+- **Visitantes**: Exploram empresas cadastradas em dashboard operacional unificado com filtros dinâmicos, mapa interativo
+- **Vendedores/Gerentes**: CRM interno com registro de interações, filtros avançados, tabela de prospecção, CSV export
+- **Gerentes+**: Relatórios analíticos (funil de vendas, performance por vendedor, ocupação)
+
+### Dados
+- **199 empresas** estratificadas por setor, tamanho, cidade
+- **6 cidades** de cobertura regional
+- **Múltiplos setores** econômicos com crescimento CAGED simulado
+- **Registro de interações**: emails, demonstrações, visitas, contratos
+
+---
+
+## 🎨 Design System: Red Broadcast
+
+Redesenho premium com tokens e componentes inspirados em **Red Broadcast** (estética moderna, flat):
+
+### Paleta
+- **Primary**: `#FF0000` (Vermelho vivo) — CTAs, badges ativas
+- **Secondary**: `#065FD4` (Azul) — Links, texto secundário  
+- **Backgrounds**: Branco (#FFFFFF) light mode, near-black (#0F0F0F) dark
+- **Shadows**: 4-nível elevation system (flat → Level 3: modals)
+
+### Tipografia
+- **Font**: Roboto (Google Fonts)
+- **Scale**: 12px–32px com base 8px
+- **Weights**: 300–700
+
+### Componentes
+- **Buttons**: Pill-shaped (border-radius: 9999px)
+- **Cards**: Flat, sem borders, shadow sutil
+- **FilterBar**: Chip-based horizontal scroll pattern
+- **Drawers**: Side panel com slide-up animation
+- **Inputs**: Background tertiary, ring focus vermelho
+
+### Dark Mode
+- Automático via `@media (prefers-color-scheme)` ou toggle manual
+- Shadows border-based em dark (Red Broadcast pattern)
+- Persistido em localStorage (`moinho-theme`)
+
+---
+
+## 📄 Rotas & Funcionalidades
+
+### Público (sem login)
+| Rota | Nome | Descrição |
+|------|------|-----------|
+| `/` | Dashboard Operacional | **NOVO**: Página unificada com mapa + filtros dinâmicos + lista de empresas + side drawer para detalhe |
+| `/login` | Login | Autenticação simples (frontend) |
+
+### CRM Interno (autenticado)
+| Rota | Papel | Descrição |
+|------|-------|-----------|
+| `/dashboard` | VENDEDOR+ | Inteligência comercial: mapa, tabela sortável/paginada, filtros (cidade/setor/porte/crescimento), CSV export, painel de interações (email/demo/nota/visita/contrato) |
+| `/metricas` | GERENTE+ | KPIs, funil de conversão, performance por vendedor, ocupação do Moinho |
+
+---
+
+## 🎬 Dashboard Operacional (`/`) — NOVO
+
+Página unificada que consolida busca, exploração e mapa:
+
+### Layout Responsivo
+- **Desktop** (>1024px): Grid 3-col (mapa 1, lista 2)
+- **Tablet** (640–1024px): 2-col (mapa 50%, lista 50%)
+- **Mobile** (<640px): Stack (mapa acima, lista abaixo)
+
+### Componentes
+1. **Header Stats**: 199 empresas | 6 cidades | N setores
+2. **FilterBar** (chip-based):
+   - Busca em tempo real (300ms debounce)
+   - Chips "Todas"/"Todos" + cada opção
+   - Botão "Limpar filtros"
+3. **Mapa**: Leaflet com CircleMarkers coloridos por setor
+4. **Company List**: Cards clicáveis com score, porte, crescimento
+5. **CompanyDrawer**: Side panel (desktop) / full-width (mobile)
+   - Info geral + contatos
+   - Mini-mapa
+   - Lead-gen form (Conectar / Agendar)
+
+### Filtros em Tempo Real
+- Busca: razão social, fantasia, bairro, CNPJ
+- Cidades/Setores: múltipla seleção (OR logic)
+- Atualiza map + lista instantaneamente
+- Resultados ordenados por score (descending)
+
+---
+
+## 🛠️ CRM Dashboard (`/dashboard`) — Protegido
+
+Interface completa para prospecção:
+
+### Filtros Avançados
+- Busca (CNPJ, razão social, bairro)
+- Cidade (dropdown)
+- Setores, Portes, Crescimento CAGED (checkboxes)
+- Botão limpar
+
+### Visualizações
+- **Mapa** (380px) com legenda
+- **Tabela** sortável:
+  - Colunas: Razão Social | Cidade | Setor | Porte | Crescimento | Score
+  - Paginação (10 por página)
+  - Seleção de linhas + CSV export
+
+### CRM Actions (CompanyDetail panel)
+1. **Enviar Email**: Template pré-preenchido
+2. **Agendar Demonstração**: Date/time picker
+3. **Adicionar Nota**: Observação livre
+4. **Registrar Visita**: Descrição presencial
+5. **Fechar Contrato**: Conversão (funil)
+
+Cada ação → registro de interação (timestamp, usuário, tipo)
+
+---
+
+## 📈 Métricas (`/metricas`) — Protegido GERENTE+
+
+### KPIs
+- Leads Qualificados, Demos Agendadas, Visitas, Contratos
+- Trend MoM (%)
+
+### Relatórios
+- Funil de Conversão (%, drop-off)
+- Performance por Vendedor (abordados, demos, contratos)
+- Ocupação Moinho (gauge vs meta)
+- Receita, Ciclo de Vendas, Taxas de Conversão
+
+---
+
+## 🔐 Autenticação
+
+**Frontend-only** (localStorage persist):
+
+| Email | Senha | Papel | Acesso |
+|-------|-------|-------|--------|
+| `carlos@moinho.com.br` | `senha123` | VENDEDOR | `/dashboard` |
+| `marina@moinho.com.br` | `senha123` | VENDEDOR | `/dashboard` |
+| `roberto@moinho.com.br` | `senha123` | GERENTE | `/dashboard`, `/metricas` |
+
+Session persisted em `localStorage` (key: `moinho-auth`)
+
+---
+
+## 🔧 Stack Técnico
+
+```
+Frontend:
+  - React 19.2 + TypeScript 6
+  - Vite 8 (dev, build, HMR)
+  - TailwindCSS 3.4
+  - Zustand 5 (state: companies, auth, theme)
+  - react-router-dom 7 (SPA routing)
+  - react-leaflet 5 + Leaflet 1.9 (maps)
+  - lucide-react 1.24 (icons)
+  - date-fns 4.4 (formatting, pt-BR)
+
+Build:
+  - PostCSS + Autoprefixer
+  - Oxlint (linting)
 ```
 
-## Credenciais de demonstração (login simulado)
+---
 
-| Perfil   | Email                  | Senha    | Acesso                 |
-| -------- | ---------------------- | -------- | ---------------------- |
-| Vendedor | carlos@moinho.com.br   | senha123 | /dashboard             |
-| Vendedor | marina@moinho.com.br   | senha123 | /dashboard             |
-| Gerente  | roberto@moinho.com.br  | senha123 | /dashboard e /metricas |
+## 📁 Estrutura do Projeto
 
-## Funcionalidades
+```
+src/
+├── pages/
+│   ├── OperationalDashboard.tsx    # Dashboard público unificado [NOVO]
+│   ├── Dashboard.tsx               # CRM interno
+│   ├── Metricas.tsx                # Analytics
+│   └── Login.tsx                   # Auth
+├── components/
+│   ├── FilterBar.tsx               # Chip filters [NOVO]
+│   ├── CompanyDrawer.tsx           # Detail side panel [NOVO]
+│   ├── Button.tsx                  # Red pill buttons
+│   ├── Card.tsx                    # Flat cards
+│   ├── Badge.tsx                   # Semantic badges
+│   ├── Input.tsx, Select.tsx, ...  # Form controls
+│   ├── MapView.tsx, MapLegend.tsx  # Map components
+│   ├── CompanyTable.tsx            # CRM table
+│   ├── CompanyDetail.tsx           # CRM detail panel
+│   └── ...
+├── hooks/
+│   ├── useDebounce.ts              # 300ms debounce
+│   └── useFilter.ts                # Filter state
+├── store/
+│   ├── useAppStore.ts              # Companies, events, metrics
+│   ├── useAuthStore.ts             # Auth + persist
+│   └── useThemeStore.ts            # Dark/light mode
+├── utils/
+│   ├── format.ts                   # CNPJ, date, currency
+│   ├── colors.ts                   # Setor/porte/growth color maps
+│   └── csv.ts                      # CSV export
+├── data/
+│   └── mock_data.json              # 199 companies (gerado)
+├── App.tsx                         # Router
+├── index.css                       # Design tokens + animations
+└── main.tsx                        # Entry
+```
 
-**Portal público** (sem login):
-- `/` — home com busca, estatísticas do ecossistema e próximos eventos
-- `/empresas` — cards de empresas com filtros de cidade, setor e busca
-- `/empresas/:id` — perfil público com mapa, contatos, conectar/agendar reunião
-- `/mapa` — mapa interativo com filtro por setor e cores por setor
-- `/eventos` — eventos e bootcamps com inscrição (validação + LGPD)
+---
 
-**Área interna** (autenticada):
-- `/dashboard` — inteligência comercial: filtros dinâmicos (cidade, setor, porte,
-  crescimento CAGED, busca com debounce), mapa com popups de ação, tabela com
-  ordenação/paginação/seleção em massa/exportação CSV e painel de detalhes com
-  histórico de interações e ações (email, demonstração, nota, visita, contrato)
-- `/metricas` — KPIs, funil de conversão, performance por vendedor, ocupação (somente GERENTE)
+## 🚀 Setup & Rodagem
 
-Extras: modo escuro persistido em localStorage, layout responsivo, lazy loading das páginas com mapa.
+### Instalação
+```bash
+npm install
+```
 
-## Dados
+### Desenvolvimento
+```bash
+npm run dev
+# http://localhost:5173 (ou próxima porta)
+# HMR automático em mudanças
+```
 
-`src/data/mock_data.json` contém **199 empresas reais da região** (CNPJ, endereço,
-coordenadas, CNAE, contatos), extraídas do dataset bruto `regiao juiz de fora.csv`
-(6.160 registros) pelo script:
+### Build Produção
+```bash
+npm run build
+# Output: dist/
+```
 
+### Preview Produção
+```bash
+npm run preview
+# Simula build local
+```
+
+---
+
+## 🎨 Customização
+
+### Cores (Red Broadcast → Custom)
+Edite `src/index.css` (`:root` tokens):
+```css
+--color-primary: #FF0000;        /* Red accent */
+--color-secondary: #065FD4;      /* Blue */
+--color-bg-primary: #FFFFFF;     /* Light bg */
+/* ... */
+```
+
+### Tipografia
+Em `tailwind.config.js`:
+```js
+fontFamily: {
+  sans: ['Roboto', 'system-ui', 'sans-serif'],
+}
+```
+
+### Dark Mode
+Toggle no header (moon/sun) ↔ classe `dark` + `data-theme` attribute em `<html>`
+
+---
+
+## 📊 Dados
+
+`src/data/mock_data.json`: **199 empresas reais** (extraídas de 6.160 registros)
+
+Geração:
 ```bash
 python3 scripts/generate_mock_data.py "../regiao juiz de fora.csv"
 ```
 
-O script filtra empresas ativas com coordenadas válidas, equilibra a distribuição
-por setor/cidade/porte, limpa nomes mascarados, padroniza datas e **simula** os
-campos de inteligência (crescimento CAGED, score de conversão e interações).
+Script:
+- Filtra ativas, válidas geograficamente
+- Stratifica por setor, balanceia por cidade
+- Simula CAGED growth, scores de conversão
+- Limpa nomes, padroniza datas
 
-## Deploy (Netlify)
+---
 
-O `netlify.toml` já define build (`npm run build`), diretório de publicação (`dist`)
-e o redirect de SPA. Basta conectar o repositório no painel da Netlify — cada push
-na branch principal dispara o deploy.
+## ✅ Checklist de Funcionalidades
+
+- [x] Dashboard operacional unificado (mapa + filtros + lista)
+- [x] Filtros dinâmicos em tempo real
+- [x] Side drawer detalhe empresa + lead-gen
+- [x] CRM com tabela sortável/paginada
+- [x] Registro de interações (5 tipos)
+- [x] CSV export
+- [x] Relatório de métricas
+- [x] Auth frontend
+- [x] Role-based access
+- [x] Dark mode
+- [x] Design premium (Red Broadcast)
+- [x] Responsivo
+- [x] TypeScript
+- [x] Lazy code-splitting
+
+---
+
+## 🌐 Deploy
+
+Com `netlify.toml` configurado. Conecte repo → auto-deploy a cada push.
+
+---
+
+## 📝 Licença
+
+MIT
+
+---
+
+## 👤 Autor
+
+Angelo Rosa — Projeto FIAP: Moinho Growth Engine
+
+**GitHub**: [foxbit/moinho-growth-engine](https://github.com/foxbit/moinho-growth-engine)
