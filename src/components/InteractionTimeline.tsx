@@ -20,7 +20,7 @@ const ICONES: Record<TipoInteracao, { icon: typeof Mail; cor: string; rotulo: st
 
 export function InteractionTimeline({ interacoes }: { interacoes: Interaction[] }) {
   if (interacoes.length === 0) {
-    return <p className="text-sm text-gray-400">Nenhuma interação registrada ainda.</p>
+    return <p className="text-sm text-[var(--color-text-tertiary)]">Nenhuma interação registrada ainda.</p>
   }
 
   const ordenadas = [...interacoes].sort((a, b) => b.data.localeCompare(a.data))
@@ -38,11 +38,11 @@ export function InteractionTimeline({ interacoes }: { interacoes: Interaction[] 
             <div className="min-w-0">
               <p className="text-sm font-medium">
                 {meta.rotulo}
-                <span className="ml-2 text-xs font-normal text-gray-400">
+                <span className="ml-2 text-xs font-normal text-[var(--color-text-tertiary)]">
                   {formatDateTime(int.data)} · {int.usuario}
                 </span>
               </p>
-              <p className="text-sm text-gray-600 dark:text-gray-300">{int.descricao}</p>
+              <p className="text-sm text-[var(--color-text-secondary)]">{int.descricao}</p>
             </div>
           </li>
         )

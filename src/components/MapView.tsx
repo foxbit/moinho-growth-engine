@@ -26,7 +26,7 @@ export function MapView({ companies, height = 'h-[480px]', renderPopup }: MapVie
   const center = useMemo<[number, number]>(() => [-21.7629, -43.3561], [])
 
   return (
-    <div className={`${height} w-full overflow-hidden rounded-lg border border-gray-200 dark:border-gray-700`}>
+    <div className={`${height} w-full overflow-hidden rounded-lg border border-[var(--color-border)]`}>
       <MapContainer center={center} zoom={9} scrollWheelZoom>
         <TileLayer
           attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'

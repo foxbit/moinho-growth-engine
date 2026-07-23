@@ -56,7 +56,7 @@ export function FilterBar({
         {temFiltrosAtivos && (
           <button
             onClick={onClear}
-            className="inline-flex items-center gap-1 rounded-full bg-[var(--color-bg-tertiary)] px-4 py-2.5 text-sm font-medium text-[var(--color-text-primary)] transition-all hover:bg-[var(--color-primary)] hover:text-white"
+            className="inline-flex items-center gap-1 rounded-full bg-[var(--color-bg-tertiary)] px-4 py-2.5 text-sm font-medium text-[var(--color-text-primary)] transition-colors hover:bg-[var(--color-primary-dark)] hover:text-white"
             title="Limpar filtros"
           >
             <X className="h-4 w-4" />
@@ -71,9 +71,9 @@ export function FilterBar({
         <div className="flex flex-wrap gap-2 overflow-x-auto pb-2">
           <button
             onClick={() => setCidades([])}
-            className={`whitespace-nowrap rounded-full px-4 py-2 text-sm font-medium transition-all ${
+            className={`whitespace-nowrap rounded-full px-4 py-2 text-sm font-medium transition-colors ${
               cidadesSelecionadas.length === 0
-                ? 'bg-[var(--color-primary)] text-white'
+                ? 'bg-[var(--color-primary-dark)] text-white'
                 : 'bg-[var(--color-bg-tertiary)] text-[var(--color-text-primary)] hover:bg-[var(--color-text-tertiary)]/20'
             }`}
           >
@@ -83,9 +83,9 @@ export function FilterBar({
             <button
               key={cidade}
               onClick={() => toggleCidade(cidade)}
-              className={`whitespace-nowrap rounded-full px-4 py-2 text-sm font-medium transition-all ${
+              className={`whitespace-nowrap rounded-full px-4 py-2 text-sm font-medium transition-colors ${
                 cidadesSelecionadas.includes(cidade)
-                  ? 'bg-[var(--color-primary)] text-white'
+                  ? 'bg-[var(--color-primary-dark)] text-white'
                   : 'bg-[var(--color-bg-tertiary)] text-[var(--color-text-primary)] hover:bg-[var(--color-text-tertiary)]/20'
               }`}
             >
@@ -101,9 +101,9 @@ export function FilterBar({
         <div className="flex flex-wrap gap-2 overflow-x-auto pb-2">
           <button
             onClick={() => setSetores([])}
-            className={`whitespace-nowrap rounded-full px-4 py-2 text-sm font-medium transition-all ${
+            className={`whitespace-nowrap rounded-full px-4 py-2 text-sm font-medium transition-colors ${
               setoresSelecionados.length === 0
-                ? 'bg-[var(--color-primary)] text-white'
+                ? 'bg-[var(--color-primary-dark)] text-white'
                 : 'bg-[var(--color-bg-tertiary)] text-[var(--color-text-primary)] hover:bg-[var(--color-text-tertiary)]/20'
             }`}
           >
@@ -113,13 +113,14 @@ export function FilterBar({
             <button
               key={setor}
               onClick={() => toggleSetor(setor)}
-              className={`whitespace-nowrap rounded-full px-4 py-2 text-sm font-medium transition-all ${
+              className={`whitespace-nowrap rounded-full px-4 py-2 text-sm font-medium transition-colors ${
                 setoresSelecionados.includes(setor)
-                  ? 'bg-[var(--color-primary)] text-white'
+                  ? 'bg-[var(--color-primary-dark)] text-white'
                   : 'bg-[var(--color-bg-tertiary)] text-[var(--color-text-primary)] hover:bg-[var(--color-text-tertiary)]/20'
               }`}
+              title={setor}
             >
-              {setor.substring(0, 20)}
+              {setor.length > 20 ? `${setor.slice(0, 19)}…` : setor}
             </button>
           ))}
         </div>

@@ -26,8 +26,7 @@ export function Modal({ isOpen, title, onClose, children, footer, wide }: ModalP
 
   return (
     <div
-      className="fixed inset-0 z-50 flex items-center justify-center backdrop-blur-sm p-4 animate-fade-in"
-      style={{ backgroundColor: 'rgba(15, 23, 42, 0.5)' }}
+      className="fixed inset-0 z-50 flex items-center justify-center backdrop-blur-sm p-4 animate-fade-in bg-[var(--color-scrim)]"
       onClick={onClose}
       role="dialog"
       aria-modal="true"
@@ -42,7 +41,7 @@ export function Modal({ isOpen, title, onClose, children, footer, wide }: ModalP
           <button
             onClick={onClose}
             aria-label="Fechar"
-            className="rounded-lg p-1.5 text-[var(--color-text-tertiary)] transition-all hover:bg-[var(--color-bg-tertiary)] hover:text-[var(--color-text-primary)]"
+            className="rounded-lg p-1.5 text-[var(--color-text-tertiary)] transition-colors hover:bg-[var(--color-bg-tertiary)] hover:text-[var(--color-text-primary)]"
           >
             <X className="h-5 w-5" />
           </button>

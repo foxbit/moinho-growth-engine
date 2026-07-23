@@ -94,8 +94,8 @@ export function OperationalDashboard() {
               renderPopup={(company) => (
                 <div className="space-y-1 text-sm">
                   <p className="font-semibold">{company.razaoSocial}</p>
-                  <p className="text-xs text-gray-600">{company.setor}</p>
-                  <p className="text-xs text-gray-600">{company.cidade}</p>
+                  <p className="text-xs text-[var(--color-text-secondary)]">{company.setor}</p>
+                  <p className="text-xs text-[var(--color-text-secondary)]">{company.cidade}</p>
                   <div className="mt-2 flex gap-1">
                     <Badge label={company.porte} variant={badgePorte(company.porte)} size="sm" />
                     <Badge label={company.crescimentoCAGED} variant={badgeCrescimento(company.crescimentoCAGED)} size="sm" />
@@ -128,14 +128,14 @@ export function OperationalDashboard() {
                   <button
                     key={company.id}
                     onClick={() => setEmpresaSelecionada(company)}
-                    className="w-full rounded-md bg-[var(--color-bg-tertiary)] p-3 text-left transition-all hover:bg-[var(--color-primary)]/10 hover:shadow-md"
+                    className="w-full rounded-md bg-[var(--color-bg-tertiary)] p-3 text-left transition-colors hover:bg-[var(--color-primary)]/10"
                   >
                     <div className="flex items-start justify-between gap-3">
                       <div className="flex-1 min-w-0">
                         <p className="font-semibold text-[var(--color-text-primary)] truncate">{company.razaoSocial}</p>
                         <p className="text-xs text-[var(--color-text-secondary)] truncate">{company.nomeFantasia}</p>
                         <div className="mt-2 flex flex-wrap gap-1">
-                          <Badge label={company.setor.substring(0, 15)} variant="info" size="sm" />
+                          <Badge label={company.setor.length > 15 ? `${company.setor.slice(0, 14)}…` : company.setor} variant="info" size="sm" />
                           <Badge label={company.cidade} variant="neutral" size="sm" />
                           <Badge label={company.porte} variant={badgePorte(company.porte)} size="sm" />
                         </div>
@@ -143,7 +143,7 @@ export function OperationalDashboard() {
                       <div className="flex flex-col items-end gap-1 shrink-0">
                         <div className="flex items-center gap-1">
                           <TrendingUp className="h-3 w-3 text-[var(--color-accent)]" />
-                          <span className="text-sm font-semibold text-[var(--color-text-primary)]">
+                          <span className="text-sm font-semibold tabular-nums text-[var(--color-text-primary)]">
                             {company.scoreConversao.toFixed(1)}
                           </span>
                         </div>

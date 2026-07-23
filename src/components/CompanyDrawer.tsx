@@ -1,11 +1,11 @@
 import { useState } from 'react'
-import { X, Mail, Calendar } from 'lucide-react'
+import { X, Mail, Calendar, CircleCheck } from 'lucide-react'
 import type { Company } from '../types'
 import { Badge, badgePorte, badgeCrescimento } from './Badge'
 import { Button } from './Button'
 import { Input } from './Input'
 import { Modal } from './Modal'
-import { formatCep, formatCnpj, formatDate } from '../utils/format'
+import { formatCep, formatCnpj } from '../utils/format'
 import { MapView } from './MapView'
 
 interface CompanyDrawerProps {
@@ -39,11 +39,11 @@ export function CompanyDrawer({ company, isOpen, onClose }: CompanyDrawerProps) 
   return (
     <>
       <div
-        className="fixed inset-0 z-40 bg-black/30 transition-opacity"
+        className="fixed inset-0 z-40 bg-[var(--color-scrim)] transition-opacity"
         onClick={onClose}
         aria-hidden="true"
       />
-      <div className="fixed right-0 top-0 z-50 h-full w-full max-w-md overflow-y-auto bg-[var(--color-bg-secondary)] shadow-xl animate-slide-up md:rounded-l-lg">
+      <div className="fixed right-0 top-0 z-50 h-full w-full max-w-md overflow-y-auto bg-[var(--color-bg-secondary)] shadow-xl animate-slide-in-right md:rounded-l-lg">
         <div className="sticky top-0 flex items-center justify-between border-b border-[var(--color-bg-tertiary)] bg-[var(--color-bg-secondary)] px-6 py-4">
           <div className="flex-1">
             <h2 className="text-lg font-bold text-[var(--color-text-primary)]">{company.razaoSocial}</h2>
@@ -54,7 +54,7 @@ export function CompanyDrawer({ company, isOpen, onClose }: CompanyDrawerProps) 
           </div>
           <button
             onClick={onClose}
-            className="rounded-full p-2 text-[var(--color-text-tertiary)] transition-all hover:bg-[var(--color-bg-tertiary)] hover:text-[var(--color-text-primary)]"
+            className="rounded-full p-2 text-[var(--color-text-tertiary)] transition-colors hover:bg-[var(--color-bg-tertiary)] hover:text-[var(--color-text-primary)]"
             aria-label="Fechar"
           >
             <X className="h-5 w-5" />
@@ -96,7 +96,7 @@ export function CompanyDrawer({ company, isOpen, onClose }: CompanyDrawerProps) 
               </div>
               <div className="flex justify-between">
                 <span className="text-[var(--color-text-secondary)]">Score</span>
-                <span className="font-medium text-[var(--color-text-primary)]">{company.scoreConversao.toFixed(1)}/10</span>
+                <span className="font-medium tabular-nums text-[var(--color-text-primary)]">{company.scoreConversao.toFixed(1)}/10</span>
               </div>
             </div>
           </div>
@@ -133,7 +133,7 @@ export function CompanyDrawer({ company, isOpen, onClose }: CompanyDrawerProps) 
               renderPopup={() => (
                 <div className="text-sm">
                   <p className="font-semibold">{company.razaoSocial}</p>
-                  <p className="text-xs text-gray-600">{company.cidade}</p>
+                  <p className="text-xs text-[var(--color-text-secondary)]">{company.cidade}</p>
                 </div>
               )}
             />
@@ -201,7 +201,7 @@ export function CompanyDrawer({ company, isOpen, onClose }: CompanyDrawerProps) 
               placeholder="Conte-nos um pouco sobre seu interesse..."
               value={mensagem}
               onChange={(e) => setMensagem(e.target.value)}
-              className="w-full rounded-md bg-[var(--color-bg-tertiary)] px-3.5 py-2.5 text-sm text-[var(--color-text-primary)] placeholder:text-[var(--color-text-tertiary)] outline-none transition-all duration-200 focus:ring-2 focus:ring-[var(--color-primary)] focus:ring-opacity-20"
+              className="w-full rounded-md bg-[var(--color-bg-tertiary)] px-3.5 py-2.5 text-sm text-[var(--color-text-primary)] placeholder:text-[var(--color-text-tertiary)] outline-none transition-[background-color,box-shadow] duration-200 focus:ring-2 focus:ring-[var(--color-primary)] focus:ring-opacity-30"
             />
           </div>
         </div>
@@ -242,13 +242,14 @@ export function CompanyDrawer({ company, isOpen, onClose }: CompanyDrawerProps) 
         </div>
       </Modal>
 
-      {/* Mensagem de sucesso */}
+      {/* Toast de sucesso — silencioso, não bloqueia a tela */}
       {enviado && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center">
-          <div className="rounded-lg bg-[var(--color-bg-secondary)] p-8 text-center shadow-xl animate-scale-in">
-            <p className="mb-2 text-lg font-bold text-[var(--color-primary)]">✓ Sucesso!</p>
-            <p className="text-[var(--color-text-secondary)]">Seus dados foram enviados. Entraremos em contato em breve.</p>
-          </div>
+        <div
+          className="fixed bottom-4 right-4 z-[60] flex items-center gap-2 rounded-lg bg-[var(--color-bg-secondary)] px-4 py-3 text-sm shadow-xl animate-slide-in-right"
+          role="status"
+        >
+          <CircleCheck className="h-4 w-4 shrink-0 text-[var(--color-success)]" />
+          <span className="text-[var(--color-text-primary)]">Dados enviados. Entraremos em contato em breve.</span>
         </div>
       )}
     </>

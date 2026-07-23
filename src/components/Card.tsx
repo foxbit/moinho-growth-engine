@@ -10,7 +10,7 @@ interface CardProps {
 export function Card({ title, subtitle, children, className = '' }: CardProps) {
   return (
     <div
-      className={`rounded-lg bg-[var(--color-bg-secondary)] p-5 shadow-md transition-all duration-300 ${className}`}
+      className={`rounded-lg bg-[var(--color-bg-secondary)] p-5 shadow-md transition-colors duration-300 ${className}`}
     >
       {title && (
         <div className="mb-4">

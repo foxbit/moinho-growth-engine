@@ -12,13 +12,13 @@ export function ProtectedRoute({ roles, children }: ProtectedRouteProps) {
   const location = useLocation()
 
   if (!isAuthenticated || !user) {
-    return <Navigate to="/login" state={{ from: location.pathname }} replace />
+    return <Navigate to="/" state={{ from: location.pathname }} replace />
   }
   if (!roles.includes(user.role)) {
     return (
       <div className="py-16 text-center">
         <h1 className="text-2xl font-bold">Acesso restrito</h1>
-        <p className="mt-2 text-gray-500 dark:text-gray-400">
+        <p className="mt-2 text-[var(--color-text-secondary)]">
           Seu perfil ({user.role}) não tem permissão para acessar esta página.
         </p>
       </div>

@@ -2,7 +2,7 @@ import { CORES_SETOR, setorCurto } from '../utils/colors'
 
 export function MapLegend({ setores }: { setores: string[] }) {
   return (
-    <div className="flex flex-wrap gap-x-4 gap-y-1 text-xs text-gray-600 dark:text-gray-300">
+    <div className="flex flex-wrap gap-x-4 gap-y-1 text-xs text-[var(--color-text-secondary)]">
       {setores.map((setor) => (
         <span key={setor} className="inline-flex items-center gap-1.5">
           <span

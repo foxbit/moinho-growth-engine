@@ -3,12 +3,13 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import { Loader2 } from 'lucide-react'
 import { Layout } from './components/Layout'
 import { ProtectedRoute } from './components/ProtectedRoute'
-import { OperationalDashboard } from './pages/OperationalDashboard'
 import { Login } from './pages/Login'
 import { Metricas } from './pages/Metricas'
 
 // Páginas com mapa (Leaflet) carregam sob demanda
-const Dashboard = lazy(() => import('./pages/Dashboard').then((m) => ({ default: m.Dashboard })))
+const Dashboard = lazy(() =>
+  import('./pages/OperationalDashboard').then((m) => ({ default: m.OperationalDashboard })),
+)
 
 function Carregando() {
   return (
@@ -23,8 +24,7 @@ export default function App() {
     <BrowserRouter>
       <Routes>
         <Route element={<Layout />}>
-          <Route path="/" element={<OperationalDashboard />} />
-          <Route path="/login" element={<Login />} />
+          <Route path="/" element={<Login />} />
           <Route
             path="/dashboard"
             element={
