@@ -1,8 +1,10 @@
 import { useState } from 'react'
 import { Link, NavLink, useNavigate } from 'react-router-dom'
-import { LogOut, Menu, Moon, Sun, Wind, X } from 'lucide-react'
+import { LogOut, Menu, Moon, Sun, X } from 'lucide-react'
 import { useAuthStore } from '../store/useAuthStore'
 import { useThemeStore } from '../store/useThemeStore'
+import logoIconPurple from '../assets/moinho-logo-icon-purple.svg'
+import logoIconWhite from '../assets/moinho-logo-icon-white.svg'
 
 const LINKS_INTERNOS = [
   { to: '/dashboard', label: 'Dashboard', roles: ['VENDEDOR', 'GERENTE', 'ADMIN'] },
@@ -34,7 +36,8 @@ export function Header() {
     <header className="sticky top-0 z-40 border-b border-[var(--color-bg-tertiary)] bg-[var(--color-bg-secondary)]/95 backdrop-blur supports-[backdrop-filter]:bg-opacity-80">
       <div className="mx-auto flex max-w-container items-center justify-between px-4 py-3">
         <Link to="/" className="flex items-center gap-2 text-lg font-bold text-[var(--color-primary)]">
-          <Wind className="h-6 w-6" />
+          <img src={logoIconPurple} alt="" className="h-7 w-auto dark:hidden" />
+          <img src={logoIconWhite} alt="" className="hidden h-7 w-auto dark:block" />
           MOINHO
         </Link>
 

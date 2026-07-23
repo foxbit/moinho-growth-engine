@@ -1,10 +1,10 @@
 import { useState } from 'react'
 import { Navigate, useLocation, useNavigate } from 'react-router-dom'
-import { Wind } from 'lucide-react'
 import { useAuthStore } from '../store/useAuthStore'
 import { Button } from '../components/Button'
 import { Card } from '../components/Card'
 import { Input } from '../components/Input'
+import logoIconWhite from '../assets/moinho-logo-icon-white.svg'
 
 export function Login() {
   const { login, isAuthenticated } = useAuthStore()
@@ -31,11 +31,11 @@ export function Login() {
     <div className="mx-auto max-w-md pt-10 sm:pt-20">
       <Card>
         <div className="mb-6 flex items-start gap-3">
-          <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-[var(--color-primary-light)]">
-            <Wind className="h-5 w-5 text-[var(--color-primary-dark)]" />
+          <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-[var(--color-primary)]">
+            <img src={logoIconWhite} alt="" className="h-5 w-auto" />
           </span>
           <div>
-            <h1 className="text-2xl font-bold">Acesso Interno</h1>
+            <h1 className="text-2xl font-bold tracking-tight">Acesso Interno</h1>
             <p className="text-sm text-[var(--color-text-secondary)]">
               Dashboard de Inteligência Comercial do Moinho
             </p>
@@ -57,7 +57,7 @@ export function Login() {
           </Button>
         </form>
 
-        <div className="mt-6 rounded-lg bg-[var(--color-bg-tertiary)] p-3 text-xs text-[var(--color-text-secondary)]">
+        <div className="mt-6 rounded-xl bg-[var(--color-bg-tertiary)] p-4 text-xs leading-relaxed text-[var(--color-text-secondary)]">
           <p className="mb-1 font-semibold text-[var(--color-text-primary)]">Credenciais de demonstração:</p>
           <p>Vendedor: carlos@moinho.com.br · senha123</p>
           <p>Vendedora: marina@moinho.com.br · senha123</p>

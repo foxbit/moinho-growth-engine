@@ -37,7 +37,7 @@ export function Input({
         disabled={disabled}
         required={required}
         onChange={(e) => onChange(e.target.value)}
-        className={`w-full rounded-md bg-[var(--color-bg-tertiary)] px-3.5 py-2.5 text-sm text-[var(--color-text-primary)] placeholder:text-[var(--color-text-tertiary)] outline-none transition-[background-color,box-shadow] duration-200 focus:ring-2 focus:ring-[var(--color-primary)] focus:ring-opacity-30 disabled:opacity-50 disabled:cursor-not-allowed ${
+        className={`w-full rounded-xl bg-[var(--color-bg-tertiary)] px-3.5 py-2.5 text-sm text-[var(--color-text-primary)] placeholder:text-[var(--color-text-tertiary)] outline-none transition-[background-color,box-shadow] duration-200 focus:ring-2 focus:ring-[var(--color-primary)] focus:ring-opacity-30 disabled:opacity-50 disabled:cursor-not-allowed ${
           error ? 'ring-2 ring-[var(--color-critical)]' : ''
         }`}
       />

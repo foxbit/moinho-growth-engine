@@ -5,13 +5,13 @@ export default {
   theme: {
     extend: {
       colors: {
-        primary: '#FF0000',
-        secondary: '#065FD4',
+        primary: '#4E1887',
+        secondary: '#A81C7D',
         alert: '#FB8C00',
         critical: '#EF4444',
       },
       fontFamily: {
-        sans: ['Roboto', 'system-ui', 'sans-serif'],
+        sans: ['Poppins', 'system-ui', 'sans-serif'],
       },
       borderRadius: {
         xs: '2px',

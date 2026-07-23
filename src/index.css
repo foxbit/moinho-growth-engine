@@ -1,17 +1,20 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap');
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 :root {
-  --color-primary: #FF0000;
-  --color-primary-light: #FFE0E0;
-  --color-primary-dark: #CC0000;
-  --color-primary-darker: #A30000;
-  --color-primary-ink: #CC0000;
-  --color-secondary: #065FD4;
-  --color-accent: #10B981;
+  /* Identidade visual extraída da marca Moinho (logo + hub-de-inovacao):
+     roxo profundo como âncora, magenta e dourado (do zigue-zague amarelo
+     da logo) como acentos secundário/terciário. */
+  --color-primary: #4E1887;
+  --color-primary-light: #F0E6FA;
+  --color-primary-dark: #3A1265;
+  --color-primary-darker: #230C3B;
+  --color-primary-ink: #4E1887;
+  --color-secondary: #A81C7D;
+  --color-accent: #8A6D00;
   --color-alert: #FB8C00;
   --color-critical: #EF4444;
   --color-critical-dark: #B91C1C;
@@ -37,10 +40,12 @@
   --color-border-light: rgba(15, 15, 15, 0.06);
   --color-scrim: rgba(15, 23, 42, 0.5);
 
-  --shadow-sm: none;
-  --shadow-md: 0 1px 2px rgba(0, 0, 0, 0.1);
-  --shadow-lg: 0 4px 16px rgba(0, 0, 0, 0.1);
-  --shadow-xl: 0 12px 32px rgba(0, 0, 0, 0.15);
+  /* Sombras em camadas (contato + ambiente), levemente tingidas de roxo
+     em vez de preto puro — lê como "desenhado", não como o padrão do browser. */
+  --shadow-sm: 0 1px 2px rgba(78, 24, 135, 0.04), 0 1px 1px rgba(15, 15, 15, 0.03);
+  --shadow-md: 0 2px 4px rgba(78, 24, 135, 0.05), 0 6px 16px rgba(15, 15, 15, 0.06);
+  --shadow-lg: 0 4px 8px rgba(78, 24, 135, 0.06), 0 16px 32px rgba(15, 15, 15, 0.08);
+  --shadow-xl: 0 8px 16px rgba(78, 24, 135, 0.08), 0 28px 56px rgba(15, 15, 15, 0.14);
 }
 
 @media (prefers-color-scheme: dark) {
@@ -54,15 +59,17 @@
     --color-text-inverse: #0F0F0F;
     --color-border: rgba(255, 255, 255, 0.12);
     --color-border-light: rgba(255, 255, 255, 0.08);
-    /* Bare text on near-black needs a lighter red to keep 4.5:1 —
-       the light-mode ink (#CC0000) is itself too dark against #0F0F0F. */
-    --color-primary-ink: #FF6B6B;
+    /* Bare text on near-black needs lighter tints to keep 4.5:1 — the
+       light-mode inks are themselves too dark against #0F0F0F. */
+    --color-primary-ink: #C9A6EA;
+    --color-secondary: #E85FAE;
+    --color-accent: #FFD966;
     --color-critical-ink: #F87171;
     --color-success-bg: #064E3B;
     --color-success-ink: #86EFAC;
-    --shadow-md: 0 1px 0 rgba(255, 255, 255, 0.05);
-    --shadow-lg: 0 2px 0 rgba(255, 255, 255, 0.05);
-    --shadow-xl: 0 4px 0 rgba(255, 255, 255, 0.08);
+    --shadow-md: 0 1px 0 rgba(255, 255, 255, 0.05), 0 6px 16px rgba(0, 0, 0, 0.35);
+    --shadow-lg: 0 2px 0 rgba(255, 255, 255, 0.05), 0 16px 32px rgba(0, 0, 0, 0.4);
+    --shadow-xl: 0 4px 0 rgba(255, 255, 255, 0.08), 0 28px 56px rgba(0, 0, 0, 0.5);
   }
 }
 
@@ -76,13 +83,15 @@
   --color-text-inverse: #0F0F0F;
   --color-border: rgba(255, 255, 255, 0.12);
   --color-border-light: rgba(255, 255, 255, 0.08);
-  --color-primary-ink: #FF6B6B;
+  --color-primary-ink: #C9A6EA;
+  --color-secondary: #E85FAE;
+  --color-accent: #FFD966;
   --color-critical-ink: #F87171;
   --color-success-bg: #064E3B;
   --color-success-ink: #86EFAC;
-  --shadow-md: 0 1px 0 rgba(255, 255, 255, 0.05);
-  --shadow-lg: 0 2px 0 rgba(255, 255, 255, 0.05);
-  --shadow-xl: 0 4px 0 rgba(255, 255, 255, 0.08);
+  --shadow-md: 0 1px 0 rgba(255, 255, 255, 0.05), 0 6px 16px rgba(0, 0, 0, 0.35);
+  --shadow-lg: 0 2px 0 rgba(255, 255, 255, 0.05), 0 16px 32px rgba(0, 0, 0, 0.4);
+  --shadow-xl: 0 4px 0 rgba(255, 255, 255, 0.08), 0 28px 56px rgba(0, 0, 0, 0.5);
 }
 
 :root[data-theme="light"] {
@@ -95,7 +104,9 @@
   --color-text-inverse: #FFFFFF;
   --color-border: rgba(15, 15, 15, 0.10);
   --color-border-light: rgba(15, 15, 15, 0.06);
-  --color-primary-ink: #CC0000;
+  --color-primary-ink: #4E1887;
+  --color-secondary: #A81C7D;
+  --color-accent: #8A6D00;
   --color-critical-ink: #B91C1C;
   --color-success-bg: #D1FAE5;
   --color-success-ink: #065F46;

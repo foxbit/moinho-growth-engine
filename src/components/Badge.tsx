@@ -9,7 +9,7 @@ const VARIANTES = {
   warning: 'bg-[#FEF3C7] text-[#92400E] dark:bg-[#78350F] dark:text-[#FDE047]',
   danger: 'bg-[#FEE2E2] text-[#991B1B] dark:bg-[#7F1D1D] dark:text-[#FCA5A5]',
   info: 'bg-[#E0ECFF] text-[#065FD4] dark:bg-[#1E3A8A] dark:text-[#93C5FD]',
-  primary: 'bg-[#FFE0E0] text-[#CC0000] dark:bg-[#660000] dark:text-[#FF6B6B]',
+  primary: 'bg-[var(--color-primary-light)] text-[var(--color-primary-ink)] dark:bg-[var(--color-primary-darker)] dark:text-[var(--color-primary-ink)]',
   neutral: 'bg-[var(--color-bg-tertiary)] text-[var(--color-text-secondary)]',
 }
 

@@ -14,15 +14,15 @@ interface ButtonProps {
 
 const VARIANTES = {
   primary:
-    'bg-[var(--color-primary-dark)] text-[var(--color-text-inverse)] hover:bg-[var(--color-primary-darker)] hover:shadow-md active:scale-95 disabled:opacity-50 disabled:cursor-not-allowed',
+    'bg-[var(--color-primary-dark)] text-[var(--color-text-inverse)] shadow-[var(--shadow-sm)] hover:bg-[var(--color-primary-darker)] hover:shadow-[var(--shadow-md)] active:scale-[0.97] disabled:opacity-50 disabled:cursor-not-allowed',
   secondary:
-    'bg-[var(--color-bg-tertiary)] text-[var(--color-text-primary)] hover:bg-[var(--color-border)] active:scale-95 disabled:opacity-50 disabled:cursor-not-allowed',
+    'bg-[var(--color-bg-tertiary)] text-[var(--color-text-primary)] hover:bg-[var(--color-border)] active:scale-[0.97] disabled:opacity-50 disabled:cursor-not-allowed',
   danger:
-    'bg-[var(--color-critical-dark)] text-[var(--color-text-inverse)] hover:bg-[var(--color-critical-darker)] hover:shadow-md active:scale-95 disabled:opacity-50 disabled:cursor-not-allowed',
+    'bg-[var(--color-critical-dark)] text-[var(--color-text-inverse)] shadow-[var(--shadow-sm)] hover:bg-[var(--color-critical-darker)] hover:shadow-[var(--shadow-md)] active:scale-[0.97] disabled:opacity-50 disabled:cursor-not-allowed',
   ghost:
-    'bg-transparent text-[var(--color-primary-ink)] hover:bg-[var(--color-primary-light)] hover:text-[var(--color-primary-dark)] active:scale-95 disabled:opacity-50 disabled:cursor-not-allowed',
+    'bg-transparent text-[var(--color-primary-ink)] hover:bg-[var(--color-primary-light)] hover:text-[var(--color-primary-dark)] active:scale-[0.97] disabled:opacity-50 disabled:cursor-not-allowed',
   outline:
-    'border border-[var(--color-border)] text-[var(--color-text-primary)] hover:border-[var(--color-primary)] hover:bg-[var(--color-primary-light)] hover:text-[var(--color-primary-dark)] active:scale-95 disabled:opacity-50 disabled:cursor-not-allowed',
+    'border border-[var(--color-border)] text-[var(--color-text-primary)] hover:border-[var(--color-primary)] hover:bg-[var(--color-primary-light)] hover:text-[var(--color-primary-dark)] active:scale-[0.97] disabled:opacity-50 disabled:cursor-not-allowed',
 }
 
 const TAMANHOS = {

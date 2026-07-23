@@ -7,9 +7,7 @@ import { Login } from './pages/Login'
 import { Metricas } from './pages/Metricas'
 
 // Páginas com mapa (Leaflet) carregam sob demanda
-const Dashboard = lazy(() =>
-  import('./pages/OperationalDashboard').then((m) => ({ default: m.OperationalDashboard })),
-)
+const Dashboard = lazy(() => import('./pages/Dashboard').then((m) => ({ default: m.Dashboard })))
 
 function Carregando() {
   return (

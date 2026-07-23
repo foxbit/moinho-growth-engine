@@ -12,6 +12,9 @@ dist
 dist-ssr
 *.local
 
+# Referência de design (não é código do app)
+site-original/
+
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json
